@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="braintreetest.alhikmah.com.braintreetest">
+    package="com.alhikmah.materialdesign">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RecyclerViewActivity"
+            android:name="com.alhikmah.materialdesign.RecyclerViewActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -25,10 +25,10 @@
         </activity>
 
         <activity
-            android:name=".SnackBarActivity"
+
+            android:name="com.alhikmah.materialdesign.SnackBarActivity"
             android:label="@string/title_activity_snack_bar"
             android:theme="@style/AppTheme.NoActionBar">
-
 
 
         </activity>

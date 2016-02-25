@@ -1,4 +1,4 @@
-package braintreetest.alhikmah.com.braintreetest;
+package com.alhikmah.materialdesign;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;

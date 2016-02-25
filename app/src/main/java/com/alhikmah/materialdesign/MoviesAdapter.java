@@ -1,4 +1,4 @@
-package braintreetest.alhikmah.com.braintreetest;
+package com.alhikmah.materialdesign;
 
 
 import android.support.v7.widget.RecyclerView;

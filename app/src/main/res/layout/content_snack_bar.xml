@@ -9,7 +9,7 @@ android:paddingLeft="@dimen/activity_horizontal_margin"
 android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-tools:context="braintreetest.alhikmah.com.braintreetest.SnackBarActivity"
+tools:context="com.alhikmah.materialdesign.SnackBarActivity"
 tools:showIn="@layout/activity_snack_bar">
 
     <Button

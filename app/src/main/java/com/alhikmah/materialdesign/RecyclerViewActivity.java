@@ -1,4 +1,4 @@
-package braintreetest.alhikmah.com.braintreetest;
+package com.alhikmah.materialdesign;
 
 import android.content.Context;
 import android.os.Bundle;
