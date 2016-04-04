@@ -25,6 +25,8 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MoviesAdapter mAdapter;
 
+    // just check git push
+
     @Override
     protected void onCreate(Bundle savedInstanceState) /**/{
         super.onCreate(savedInstanceState);
