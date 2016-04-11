@@ -18,8 +18,7 @@ public class SnackBarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_snack_bar);
 
 
-
-    Button button=(Button)findViewById(R.id.button_snack);
+        Button button = (Button) findViewById(R.id.button_snack);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
