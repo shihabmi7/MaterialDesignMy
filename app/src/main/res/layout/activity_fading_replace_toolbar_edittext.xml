@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <com.alhikmah.materialdesign.ScrollViewX
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
@@ -33,6 +32,8 @@
         <include
             android:id="@+id/app_bar"
             layout="@layout/app_bar" />
+
+
     </RelativeLayout>
 
     <fragment
