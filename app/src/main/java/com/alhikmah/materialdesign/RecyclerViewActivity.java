@@ -19,8 +19,8 @@ import java.util.List;
 public class RecyclerViewActivity extends AppCompatActivity {
 
     private int REQUEST_CODE = 30;
-    private String HALAL_TOKEN_URI = "http://45.55.196.7:1337/rest/paymentgateway/token";
-    private String HALAL_TRANSACTION = "http://45.55.196.7:1337/rest/paymentgateway/transaction";
+    private String HALAL_TOKEN_URI = "";
+    private String HALAL_TRANSACTION = "";
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MoviesAdapter mAdapter;
