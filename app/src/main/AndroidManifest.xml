@@ -39,6 +39,16 @@
 
         </activity>
 
+        <activity
+
+            android:name="com.alhikmah.materialdesign.NotificationActivity"
+            android:label="@string/title_activity_snack_bar"
+            android:theme="@style/AppTheme.NoActionBar">
+
+
+        </activity>
+
+
         <activity android:name=".FadingActivityAndNavigationDrawer">
 
 
