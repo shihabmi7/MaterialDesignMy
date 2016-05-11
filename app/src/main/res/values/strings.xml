@@ -7,4 +7,18 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <string-array name="division">
+
+        <item>DHAKA</item>
+        <item>CHITTAGONG</item>
+        <item>BARISAL</item>
+        <item>KHULNA</item>
+        <item>RAJSHAHI</item>
+        <item>COMILLA</item>
+        <item>DINAJPUR</item>
+        <item>JESSORE</item>
+        <item>MADRASHA</item>
+        <item>TECHNICAL</item>
+    </string-array>
+
 </resources>

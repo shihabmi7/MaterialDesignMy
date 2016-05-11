@@ -32,7 +32,8 @@ public class HomeActivity extends AppCompatActivity {
             new Sample("RecyclerViewActivity", RecyclerViewActivity.class),
             new Sample("SnackBarActivity", SnackBarActivity.class),
             new Sample("FadingActivityAndNavigationDrawer", FadingActivityAndNavigationDrawer.class),
-            new Sample("NotificationActivity", NotificationActivity.class)
+            new Sample("NotificationActivity", NotificationActivity.class),
+            new Sample("SendSmsActivity", SendSmsActivity.class),
 
 
     };
