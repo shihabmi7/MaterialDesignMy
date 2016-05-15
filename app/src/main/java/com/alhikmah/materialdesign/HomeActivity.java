@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
             new Sample("FadingActivityAndNavigationDrawer", FadingActivityAndNavigationDrawer.class),
             new Sample("NotificationActivity", NotificationActivity.class),
             new Sample("SendSmsActivity", SendSmsActivity.class),
+            new Sample("Chat Activity", ChatActivity.class)
 
 
     };
