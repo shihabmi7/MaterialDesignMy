@@ -8,11 +8,14 @@
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
+
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         <activity
             android:name="com.alhikmah.materialdesign.RecyclerViewActivity"
             android:label="@string/app_name"
@@ -43,8 +46,15 @@
 
         <activity
 
-            android:name="com.alhikmah.materialdesign.SendSmsActivity"
+            android:name="com.alhikmah.materialdesign.CardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
 
+
+        </activity>
+
+        <activity
+
+            android:name="com.alhikmah.materialdesign.SendSmsActivity"
             android:theme="@style/AppTheme.NoActionBar">
 
 
@@ -53,14 +63,13 @@
         <activity
 
             android:name="com.alhikmah.materialdesign.NotificationActivity"
-            android:label="@string/title_activity_snack_bar"
             android:theme="@style/AppTheme.NoActionBar">
 
 
         </activity>
 
 
-        <activity android:name=".FadingActivityAndNavigationDrawer"/>
+        <activity android:name=".FadingActivityAndNavigationDrawer" />
         <activity android:name=".ChatActivity">
 
 

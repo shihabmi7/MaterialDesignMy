@@ -5,12 +5,14 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "braintreetest.alhikmah.com.braintreetest"
+
+        applicationId "com.alhikmah.materialdesign"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+
     }
     buildTypes {
         release {
@@ -31,4 +33,8 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.android.support:recyclerview-v7:23.1.1'
     compile 'me.himanshusoni.chatmessageview:chat-message-view:1.0.3'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'de.hdodenhof:circleimageview:1.3.0'
+    compile 'me.relex:circleindicator:1.1.8@aar'
+    compile 'com.android.support:multidex:1.0.0'
 }

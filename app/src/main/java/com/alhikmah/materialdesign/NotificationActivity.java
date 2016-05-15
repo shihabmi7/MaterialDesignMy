@@ -20,10 +20,10 @@ public class NotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_snack_bar);
+        setContentView(R.layout.activity_notification);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("SnackBarActivity");
+        toolbar.setTitle("NotificationActivity");
         setSupportActionBar(toolbar);
 
 
