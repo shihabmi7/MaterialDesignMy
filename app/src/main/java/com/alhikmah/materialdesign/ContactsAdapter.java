@@ -36,7 +36,7 @@ public class ContactsAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.feed_list, parent, false);
+        View contactView = inflater.inflate(R.layout.card_item, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(context,contactView);

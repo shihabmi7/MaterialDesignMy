@@ -23,6 +23,7 @@
 -dontwarn  com.braintreepayments.**
 -dontwarn  me.**
 -dontwarn  de.hdodenhof.**
+-dontwarn  com.github.rey5137.**
 
 
 #Acra
@@ -53,3 +54,6 @@
 -keep class de.hdodenhof.**  { *; }
 -keepattributes Signature
 
+#Acra
+-keep class com.github.rey5137.**  { *; }
+-keepattributes Signature

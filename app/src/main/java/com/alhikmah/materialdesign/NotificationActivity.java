@@ -34,17 +34,20 @@ public class NotificationActivity extends AppCompatActivity {
 
                 // can use the coordinator id as view
                 // findViewById(R.id.myCoordinatorLayout)
-                Snackbar.make(v, "SnackBar Example", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(v, "Notification Created", Snackbar.LENGTH_INDEFINITE)
                         .setAction("UNDO", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
                             }
                         }).show();
+
+
+                createNotification();
             }
         });
 
-        createNotification();
+
 
     }
 

@@ -11,10 +11,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /*
@@ -26,10 +28,11 @@ public class SendSmsActivity extends AppCompatActivity {
     EditText editText_roll;
     Spinner spinner;
     TextView textView_result;
-
+    private ListView mListView;
     int SMS_NUMBER = 16222;
     String make_string = "";
     String EXAM_TYPE = "SSC";
+    private ChatMessageAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +41,17 @@ public class SendSmsActivity extends AppCompatActivity {
 
         //txtphoneNo = (EditText) findViewById(R.id.editText_phone_num);
         editText_roll = (EditText) findViewById(R.id.editText_roll);
-        textView_result = (TextView) findViewById(R.id.textView_result);
+        //textView_result = (TextView) findViewById(R.id.textView_result);
 
         spinner = (Spinner) findViewById(R.id.spinner_division);
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        toolbar.setTitle("SendSmsActivity");
 //        setSupportActionBar(toolbar);
+
+        mListView = (ListView) findViewById(R.id.listView);
+        mAdapter = new ChatMessageAdapter(this, new ArrayList<ChatMessage>());
+        mListView.setAdapter(mAdapter);
 
         Button button = (Button) findViewById(R.id.btnSendSMS);
         button.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +63,8 @@ public class SendSmsActivity extends AppCompatActivity {
             }
         });
 
-        getSMSForIndividual();
-
+        getInboxSMSForIndividual();
+        getSentSMSForIndividual();
     }
 
     protected void sendSMS() {
@@ -107,6 +114,7 @@ public class SendSmsActivity extends AppCompatActivity {
         }
     }
 
+    // get all SMS
     private void getSMSDetails() {
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("*********SMS History*************** :");
@@ -145,20 +153,46 @@ public class SendSmsActivity extends AppCompatActivity {
                 stringBuffer.append("\n----------------------------------");
                 cursor.moveToNext();
             }
-            textView_result.setText(stringBuffer);
+            // just off
+           // textView_result.setText(stringBuffer);
         }
         cursor.close();
     }
 
-    private void getSMSForIndividual() {
+    private void sendMessage(String message) {
+        ChatMessage chatMessage = new ChatMessage(message, true, false);
+        mAdapter.add(chatMessage);
 
+        // this is for other person message
+        //mimicOtherMessage(message);
+    }
+
+    private void mimicOtherMessage(String message) {
+        ChatMessage chatMessage = new ChatMessage(message, false, false);
+        mAdapter.add(chatMessage);
+    }
+
+    private void sendMessage() {
+        ChatMessage chatMessage = new ChatMessage(null, true, true);
+        mAdapter.add(chatMessage);
+
+        mimicOtherMessage();
+    }
+
+    private void mimicOtherMessage() {
+        ChatMessage chatMessage = new ChatMessage(null, false, true);
+        mAdapter.add(chatMessage);
+    }
+
+    private void getInboxSMSForIndividual() {
+    //20141
         StringBuilder smsBuilder = new StringBuilder();
         final String SMS_URI_INBOX = "content://sms/inbox";
         final String SMS_URI_ALL = "content://sms/";
         try {
             Uri uri = Uri.parse(SMS_URI_INBOX);
             String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
-            Cursor cur = getContentResolver().query(uri, projection, "address='20141'", null, "date desc");
+            Cursor cur = getContentResolver().query(uri, projection, "address='+8801723623393'", null, "date desc");
             if (cur.moveToFirst()) {
                 int index_Address = cur.getColumnIndex("address");
                 int index_Person = cur.getColumnIndex("person");
@@ -172,13 +206,18 @@ public class SendSmsActivity extends AppCompatActivity {
                     long longDate = cur.getLong(index_Date);
                     int int_Type = cur.getInt(index_Type);
 
-                    smsBuilder.append("[ ");
-                    smsBuilder.append(strAddress + ", ");
-                    smsBuilder.append(intPerson + ", ");
+                   // smsBuilder.append("[ ");
+                   // smsBuilder.append(strAddress + ", ");
+                   // smsBuilder.append(intPerson + ", ");
                     smsBuilder.append(strbody + ", ");
-                    smsBuilder.append(longDate + ", ");
-                    smsBuilder.append(int_Type);
-                    smsBuilder.append(" ]\n\n");
+                    //smsBuilder.append(longDate + ", ");
+                    //smsBuilder.append(int_Type);
+                   // smsBuilder.append(" ]\n\n");
+
+                    // shihab code
+                    mimicOtherMessage(""+smsBuilder);
+                    smsBuilder.setLength(0);
+
                 } while (cur.moveToNext());
 
                 if (!cur.isClosed()) {
@@ -189,7 +228,59 @@ public class SendSmsActivity extends AppCompatActivity {
                 smsBuilder.append("no result!");
             } // end if
 
-            textView_result.setText(smsBuilder);
+            //textView_result.setText(smsBuilder);
+
+        } catch (SQLiteException ex) {
+            Log.d("SQLiteException", ex.getMessage());
+        }
+
+    }
+
+    private void getSentSMSForIndividual() {
+
+        StringBuilder smsBuilder = new StringBuilder();
+       // final String SMS_URI_INBOX = "content://sms/";
+        final String SMS_URI_ALL = "content://sms/sent";
+        try {
+            Uri uri = Uri.parse(SMS_URI_ALL);
+            String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
+            Cursor cur = getContentResolver().query(uri, projection, "address='+8801723623393'", null, "date desc");
+            if (cur.moveToFirst()) {
+                int index_Address = cur.getColumnIndex("address");
+                int index_Person = cur.getColumnIndex("person");
+                int index_Body = cur.getColumnIndex("body");
+                int index_Date = cur.getColumnIndex("date");
+                int index_Type = cur.getColumnIndex("type");
+                do {
+                    String strAddress = cur.getString(index_Address);
+                    int intPerson = cur.getInt(index_Person);
+                    String strbody = cur.getString(index_Body);
+                    long longDate = cur.getLong(index_Date);
+                    int int_Type = cur.getInt(index_Type);
+
+                    // smsBuilder.append("[ ");
+                    // smsBuilder.append(strAddress + ", ");
+                    // smsBuilder.append(intPerson + ", ");
+                    smsBuilder.append(strbody + ", ");
+                    //smsBuilder.append(longDate + ", ");
+                    //smsBuilder.append(int_Type);
+                    // smsBuilder.append(" ]\n\n");
+
+                    // shihab code
+                    sendMessage(""+smsBuilder);
+                    smsBuilder.setLength(0);
+
+                } while (cur.moveToNext());
+
+                if (!cur.isClosed()) {
+                    cur.close();
+                    cur = null;
+                }
+            } else {
+                smsBuilder.append("no result!");
+            } // end if
+
+            //textView_result.setText(smsBuilder);
 
         } catch (SQLiteException ex) {
             Log.d("SQLiteException", ex.getMessage());

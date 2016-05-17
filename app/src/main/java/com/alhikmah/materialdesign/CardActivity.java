@@ -13,12 +13,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 public class CardActivity extends AppCompatActivity {
 
     RelativeLayout noti, leader, feed, follow, prof;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,14 @@ public class CardActivity extends AppCompatActivity {
         rvContacts.setAdapter(adapter);
         // Set layout manager to position the items
         rvContacts.setLayoutManager(new LinearLayoutManager(this));
+
+        rvContacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(),"Clicked..",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -77,6 +86,8 @@ public class CardActivity extends AppCompatActivity {
 //        } else {
         super.onBackPressed();
 //        }
+
+        overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
     }
 
 //    @Override

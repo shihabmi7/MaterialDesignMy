@@ -34,7 +34,8 @@ public class HomeActivity extends BaseActivity {
             new Sample("Fading Activity And Navigation Drawer", FadingActivityAndNavigationDrawer.class),
             new Sample("Notification Activity", NotificationActivity.class),
             new Sample("Send Sms Activity", SendSmsActivity.class),
-            new Sample("Chat Activity", ChatActivity.class)
+            new Sample("Chat Activity", ChatActivity.class),
+            new Sample("MaterialDesignPreLoliPopActivity", MaterialDesignPreLoliPopActivity.class)
 
 
     };
