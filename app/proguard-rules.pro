@@ -1,6 +1,6 @@
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
-# in E:\AndroidStudioSDk/tools/proguard/proguard-android.txt
+# in E:\Android\sdk/tools/proguard/proguard-android.txt
 # You can edit the include path and order by changing the proguardFiles
 # directive in build.gradle.
 #
@@ -15,3 +15,41 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-dontwarn com.google.code.**
+-dontwarn  org.apache.**
+-dontwarn  com.google.android.**
+-dontwarn  com.android.**
+-dontwarn  com.braintreepayments.**
+-dontwarn  me.**
+-dontwarn  de.hdodenhof.**
+
+
+#Acra
+-keep class com.google.code.**  { *; }
+-keepattributes Signature
+
+#Acra
+-keep class org.apache.**  { *; }
+-keepattributes Signature
+
+#Acra
+-keep class com.google.android.**  { *; }
+-keepattributes Signature
+
+#Acra
+-keep class com.android.**  { *; }
+-keepattributes Signature
+
+#Acra
+-keep class com.braintreepayments.**  { *; }
+-keepattributes Signature
+
+#Acra
+-keep class me.**  { *; }
+-keepattributes Signature
+
+#Acra
+-keep class de.hdodenhof.**  { *; }
+-keepattributes Signature
+

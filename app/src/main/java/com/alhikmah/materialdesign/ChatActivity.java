@@ -60,14 +60,15 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void sendMessage(String message) {
-        ChatMessage chatMessage = new ChatMessage(message, true, false);
+        ChatMessage chatMessage = new ChatMessage(message, true, true);
         mAdapter.add(chatMessage);
 
+        // this is for other person message
         mimicOtherMessage(message);
     }
 
     private void mimicOtherMessage(String message) {
-        ChatMessage chatMessage = new ChatMessage(message, false, false);
+        ChatMessage chatMessage = new ChatMessage(message, false, true);
         mAdapter.add(chatMessage);
     }
 
