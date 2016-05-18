@@ -6,6 +6,7 @@ package com.alhikmah.materialdesign;
 public class ChatMessage {
     private boolean isImage, isMine;
     private String content;
+    private String time_n_date;
 
     public ChatMessage(String message, boolean mine, boolean image) {
         content = message;
@@ -35,5 +36,13 @@ public class ChatMessage {
 
     public void setIsImage(boolean isImage) {
         this.isImage = isImage;
+    }
+
+    public String getTime_n_date() {
+        return time_n_date;
+    }
+
+    public void setTime_n_date(String time_n_date) {
+        this.time_n_date = time_n_date;
     }
 }

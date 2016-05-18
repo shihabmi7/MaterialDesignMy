@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -154,21 +155,23 @@ public class SendSmsActivity extends AppCompatActivity {
                 cursor.moveToNext();
             }
             // just off
-           // textView_result.setText(stringBuffer);
+            // textView_result.setText(stringBuffer);
         }
         cursor.close();
     }
 
-    private void sendMessage(String message) {
+    private void sendMessage(String message, String time) {
         ChatMessage chatMessage = new ChatMessage(message, true, false);
+        chatMessage.setTime_n_date(time);
         mAdapter.add(chatMessage);
 
         // this is for other person message
         //mimicOtherMessage(message);
     }
 
-    private void mimicOtherMessage(String message) {
+    private void mimicOtherMessage(String message, String time) {
         ChatMessage chatMessage = new ChatMessage(message, false, false);
+        chatMessage.setTime_n_date(time);
         mAdapter.add(chatMessage);
     }
 
@@ -185,10 +188,10 @@ public class SendSmsActivity extends AppCompatActivity {
     }
 
     private void getInboxSMSForIndividual() {
-    //20141
+        //20141
         StringBuilder smsBuilder = new StringBuilder();
         final String SMS_URI_INBOX = "content://sms/inbox";
-        final String SMS_URI_ALL = "content://sms/";
+
         try {
             Uri uri = Uri.parse(SMS_URI_INBOX);
             String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
@@ -206,16 +209,18 @@ public class SendSmsActivity extends AppCompatActivity {
                     long longDate = cur.getLong(index_Date);
                     int int_Type = cur.getInt(index_Type);
 
-                   // smsBuilder.append("[ ");
-                   // smsBuilder.append(strAddress + ", ");
-                   // smsBuilder.append(intPerson + ", ");
+                    // smsBuilder.append("[ ");
+                    // smsBuilder.append(strAddress + ", ");
+                    // smsBuilder.append(intPerson + ", ");
                     smsBuilder.append(strbody + ", ");
                     //smsBuilder.append(longDate + ", ");
                     //smsBuilder.append(int_Type);
-                   // smsBuilder.append(" ]\n\n");
+                    // smsBuilder.append(" ]\n\n");
 
                     // shihab code
-                    mimicOtherMessage(""+smsBuilder);
+
+                    mimicOtherMessage("" + smsBuilder, getTimeDate(longDate));
+                    Log.e("msg time", getTimeDate(longDate));
                     smsBuilder.setLength(0);
 
                 } while (cur.moveToNext());
@@ -239,7 +244,7 @@ public class SendSmsActivity extends AppCompatActivity {
     private void getSentSMSForIndividual() {
 
         StringBuilder smsBuilder = new StringBuilder();
-       // final String SMS_URI_INBOX = "content://sms/";
+        // final String SMS_URI_INBOX = "content://sms/";
         final String SMS_URI_ALL = "content://sms/sent";
         try {
             Uri uri = Uri.parse(SMS_URI_ALL);
@@ -267,7 +272,8 @@ public class SendSmsActivity extends AppCompatActivity {
                     // smsBuilder.append(" ]\n\n");
 
                     // shihab code
-                    sendMessage(""+smsBuilder);
+
+                    sendMessage("" + smsBuilder, getTimeDate(longDate));
                     smsBuilder.setLength(0);
 
                 } while (cur.moveToNext());
@@ -286,6 +292,12 @@ public class SendSmsActivity extends AppCompatActivity {
             Log.d("SQLiteException", ex.getMessage());
         }
 
+    }
+
+    private String getTimeDate(long longDate) {
+        Date date = new Date(longDate);
+        String formattedDate = new SimpleDateFormat("MM/dd/yyyy").format(date);
+        return formattedDate;
     }
 
 
