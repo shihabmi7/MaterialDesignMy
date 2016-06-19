@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:name=".MyApplication"
@@ -17,7 +18,7 @@
         <activity
             android:name=".RecyclerViewActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -30,18 +31,18 @@
         <activity
             android:name=".SnackBarActivity"
             android:label="@string/title_activity_snack_bar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CardActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SendSmsActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NotificationActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".FadingActivityAndNavigationDrawer" />
-        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".ChatActivity" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -50,7 +51,18 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".MaterialDesignPreLoliPopActivity"></activity>
+        <activity android:name=".MaterialDesignPreLoliPopActivity" />
+
+        <receiver android:name="com.alhikmah.materialdesign.SMSReceiver">
+
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+
+
+        </receiver>
+
+
     </application>
 
 </manifest>

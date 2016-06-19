@@ -87,6 +87,7 @@ public class SendSmsActivity extends AppCompatActivity {
         }
     }
 
+    // send sms to a number
     protected void sendSMSMessage() {
         Log.i("Send SMS", "");
         //String phoneNo = txtphoneNo.getText().toString();
@@ -195,7 +196,7 @@ public class SendSmsActivity extends AppCompatActivity {
         try {
             Uri uri = Uri.parse(SMS_URI_INBOX);
             String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
-            Cursor cur = getContentResolver().query(uri, projection, "address='+8801723623393'", null, "date desc");
+            Cursor cur = getContentResolver().query(uri, projection, "address='"+SMS_NUMBER+"'", null, "date desc");
             if (cur.moveToFirst()) {
                 int index_Address = cur.getColumnIndex("address");
                 int index_Person = cur.getColumnIndex("person");
@@ -237,6 +238,8 @@ public class SendSmsActivity extends AppCompatActivity {
 
         } catch (SQLiteException ex) {
             Log.d("SQLiteException", ex.getMessage());
+        }catch (Exception ex) {
+            Log.d("Exception", ex.getMessage());
         }
 
     }
@@ -249,7 +252,7 @@ public class SendSmsActivity extends AppCompatActivity {
         try {
             Uri uri = Uri.parse(SMS_URI_ALL);
             String[] projection = new String[]{"_id", "address", "person", "body", "date", "type"};
-            Cursor cur = getContentResolver().query(uri, projection, "address='+8801723623393'", null, "date desc");
+            Cursor cur = getContentResolver().query(uri, projection, "address='"+SMS_NUMBER+"'", null, "date desc");
             if (cur.moveToFirst()) {
                 int index_Address = cur.getColumnIndex("address");
                 int index_Person = cur.getColumnIndex("person");
@@ -290,6 +293,10 @@ public class SendSmsActivity extends AppCompatActivity {
 
         } catch (SQLiteException ex) {
             Log.d("SQLiteException", ex.getMessage());
+        }
+
+        catch (Exception ex) {
+            Log.d("Exception", ex.getMessage());
         }
 
     }

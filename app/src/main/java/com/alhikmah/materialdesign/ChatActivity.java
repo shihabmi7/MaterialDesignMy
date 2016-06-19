@@ -19,8 +19,6 @@ public class ChatActivity extends AppCompatActivity {
     private Button mButtonSend;
     private EditText mEditTextMessage;
     private ImageView mImageView;
-
-
     private ChatMessageAdapter mAdapter;
 
     @Override
@@ -41,11 +39,11 @@ public class ChatActivity extends AppCompatActivity {
         mButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = mEditTextMessage.getText().toString();
+                String message = mEditTextMessage.getText().toString().trim();
                 if (TextUtils.isEmpty(message)) {
                     return;
                 }
-                sendMessage(message);
+                sendMessageWithPic(message);
                 mEditTextMessage.setText("");
             }
         });
@@ -60,15 +58,15 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    private void sendMessage(String message) {
+    private void sendMessageWithPic(String message) {
         ChatMessage chatMessage = new ChatMessage(message, true, true);
         mAdapter.add(chatMessage);
 
         // this is for other person message
-        mimicOtherMessage(message);
+        mimicOtherMessageWithPic(message);
     }
 
-    private void mimicOtherMessage(String message) {
+    private void mimicOtherMessageWithPic(String message) {
         ChatMessage chatMessage = new ChatMessage(message, false, true);
         mAdapter.add(chatMessage);
     }
