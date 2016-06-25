@@ -57,9 +57,13 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
             textView.setText(getItem(position).getContent());
             time.setText(getItem(position).getTime_n_date());
         } else if (viewType == MY_IMAGE) {
+
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_mine_image, parent, false);
+
         } else {
+
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_other_image, parent, false);
+
         }
 
         convertView.findViewById(R.id.chatMessageView).setOnClickListener(new View.OnClickListener() {
