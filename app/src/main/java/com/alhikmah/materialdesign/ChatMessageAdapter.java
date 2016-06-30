@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -60,9 +61,24 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
 
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_mine_image, parent, false);
 
+            TextView textView = (TextView) convertView.findViewById(R.id.text);
+            TextView time = (TextView) convertView.findViewById(R.id.time_n_date);
+
+            textView.setText(getItem(position).getContent());
+
+            Date date = new Date();
+            time.setText("" + date.getTime());
+
         } else {
 
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_other_image, parent, false);
+            TextView textView = (TextView) convertView.findViewById(R.id.text);
+            TextView time = (TextView) convertView.findViewById(R.id.time_n_date);
+
+            textView.setText(getItem(position).getContent());
+
+            Date date = new Date();
+            time.setText("" + date.getTime());
 
         }
 

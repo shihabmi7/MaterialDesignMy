@@ -51,7 +51,13 @@ public class ChatActivity extends AppCompatActivity {
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendMessage();
+
+                String message = mEditTextMessage.getText().toString().trim();
+                if (TextUtils.isEmpty(message)) {
+                    return;
+                }
+                sendMessageWithPic(message);
+                mEditTextMessage.setText("");
             }
         });
 
