@@ -1,24 +1,13 @@
 package com.alhikmah.materialdesign;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by ASUS on 4/11/2016.
@@ -28,6 +17,7 @@ public class HomeActivity extends BaseActivity {
 
     Sample[] samples = {
 
+            new Sample("ScrollableActivty", ScrollableActivty.class),
             new Sample("Card Activity", CardActivity.class),
             new Sample("RecyclerView Activity", RecyclerViewActivity.class),
             new Sample("Snack Bar Activity", SnackBarActivity.class),
@@ -36,7 +26,6 @@ public class HomeActivity extends BaseActivity {
             new Sample("Send Sms Activity", SendSmsActivity.class),
             new Sample("Chat Activity", ChatActivity.class),
             new Sample("MaterialDesignPreLoliPopActivity", MaterialDesignPreLoliPopActivity.class)
-
 
     };
     Activity activity = this;
@@ -106,7 +95,7 @@ public class HomeActivity extends BaseActivity {
 
     }
 
-    private void toast(String message){
+    private void toast(String message) {
         super.showToast(message);
     }
 }

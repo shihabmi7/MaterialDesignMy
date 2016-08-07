@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class FadingActivityAndNavigationDrawer extends AppCompatActivity {
 
     ColorDrawable colorDrawable;
-    EditText myEditText ;
+    EditText myEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -53,16 +53,13 @@
 
         <activity android:name=".MaterialDesignPreLoliPopActivity" />
 
-        <receiver android:name="com.alhikmah.materialdesign.SMSReceiver">
-
+        <receiver android:name=".SMSReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
-
-
         </receiver>
 
-
+        <activity android:name=".ScrollableActivty"></activity>
     </application>
 
 </manifest>
